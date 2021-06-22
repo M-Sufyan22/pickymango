@@ -1,0 +1,262 @@
+@font-face {
+  font-family: "Droid Arabic Kufi";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Droid Arabic Kufi"),
+    url("fonts/DroidKufi-Regular.woff2") format("woff2"),
+    local("Droid Arabic Kufi"),
+    url("fonts/DroidKufi-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Droid Arabic Kufi";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Droid Arabic Kufi"),
+    url("fonts/DroidKufi-Bold.woff2") format("woff2"),
+    local("Droid Arabic Kufi"),
+    url("fonts/DroidKufi-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins"), url(./fonts/Poppins-Medium.ttf);
+}
+
+* {
+  font-family: "Poppins", "Droid Arabic Kufi", sans-serif;
+}
+
+.header-link {
+  padding: 0 0.75rem;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.search_bar .MuiFilledInput-root {
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+.search_bar {
+  border: 1px solid #999;
+  border-bottom: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  display: inline-block;
+  position: absolute;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: 0rem !important;
+  margin: 0;
+  background: 0 0;
+  --swiper-navigation-size: 1rem;
+  color: #fff !important;
+  height: auto;
+  background-image: linear-gradient(
+    to left bottom,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color-primary);
+}
+
+.swiper-button-prev {
+  right: 51% !important;
+}
+
+.swiper-button-next {
+  left: 51% !important;
+}
+
+header a {
+  color: #333;
+  position: relative;
+}
+.nav_link::before {
+  content: "";
+  color: #333;
+  height: 2px;
+  width: 0;
+  transition: all 0.2s;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: var(--color-primary);
+}
+
+a {
+  color: #333;
+}
+
+.nav_link:hover::before,
+.active::before {
+  width: 100% !important;
+}
+
+.active,
+a:hover {
+  color: var(--color-primary);
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  opacity: 0.35;
+  cursor: auto;
+  pointer-events: none;
+}
+.border-left {
+  border-left: 1px solid #dee2e6 !important;
+}
+.border-right {
+  border-right: 1px solid #dee2e6 !important;
+}
+
+.animation-linear {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: customticker;
+  animation-name: customticker;
+  -webkit-animation-duration: 15s;
+  animation-duration: 15s;
+}
+
+@-webkit-keyframes customticker {
+  0% {
+    transform: translate3d(110%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(-110%, 0, 0);
+  }
+}
+@keyframes customticker {
+  0% {
+    transform: translate3d(110%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(-110%, 0, 0);
+  }
+}
+
+.colored_heading {
+  color: transparent;
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+  background-color: var(--color-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+}
+
+.text_sec {
+  color: var(--color-secondary);
+}
+
+.Cal__Header__root.Cal__Header__landscape {
+  width: 17rem;
+}
+
+.Cal__Header__dateWrapper.Cal__Header__day {
+  height: 2rem !important;
+  font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
+  line-height: 2rem !important;
+}
+
+.Cal__Header__range {
+  display: block !important;
+}
+
+.Cal__Header__range .Cal__Header__wrapper:last-child {
+  margin-left: 0 !important;
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 100%;
+  }
+  .hide_on_med {
+    display: block;
+  }
+  .hide_on_large {
+    display: none;
+  }
+}
+
+@media (min-width: 1400px) {
+  html {
+    font-size: 115%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  html {
+    font-size: 90%;
+  }
+}
+@media (min-width: 576px) and (max-width: 768px) {
+  html {
+    font-size: 85%;
+  }
+}
+@media (max-width: 576px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+.inner_img {
+  position: relative;
+  padding-bottom: 100%;
+  border: 1px solid #eee;
+  border-radius: 50%;
+}
+.inner_img .img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.linear {
+  background-image: linear-gradient(
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}

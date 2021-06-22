@@ -1,0 +1,62 @@
+.ltr * {
+  font-family: "Poppins", "Droid Arabic Kufi", sans-serif;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.ltr .scroll_to_top {
+  right: 2rem;
+}
+
+@media (min-width: 992px) {
+  .ltr .header-other li.nav-item:not(:last-child):after {
+    right: 0;
+  }
+}
+
+.ltr .hero-additionWrapper {
+  left: -5px;
+}
+
+.ltr .homeTanent-additionWrapper {
+  right: -32em;
+}
+
+@media (min-width: 768px) {
+  .ltr .hero-additionWrapper {
+    left: -45px;
+  }
+  .ltr .homeTanent-additionWrapper {
+    right: -32em;
+  }
+}
+@media (min-width: 992px) {
+  .ltr .hero-additionWrapper {
+    left: -50px;
+  }
+}
+@media (min-width: 1200px) {
+  .ltr .hero-additionWrapper {
+    left: -55px;
+  }
+  .ltr .homeTanent-additionWrapper {
+    right: -32em;
+  }
+}
+@media (min-width: 1400px) {
+  .ltr .hero-additionWrapper {
+    left: -70px;
+  }
+  .ltr .homeTanent-additionWrapper {
+    right: -37em;
+  }
+  .ltr .tanent-name {
+    left: -2.4rem;
+  }
+}
+
+.ltr input {
+  direction: ltr;
+}

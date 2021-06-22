@@ -1,0 +1,63 @@
+.rtl {
+  direction: rtl;
+}
+
+.rtl * {
+  font-family: "Droid Arabic Kufi", "Poppins", sans-serif;
+}
+
+.rtl .scroll_to_top {
+  left: 2rem;
+}
+
+@media (min-width: 992px) {
+  .rtl .header-other li.nav-item:not(:last-child):after {
+    right: 0;
+  }
+}
+
+.rtl .hero-additionWrapper {
+  right: -5px;
+}
+.rtl .homeTanent-additionWrapper {
+  left: -32em;
+}
+
+@media (min-width: 768px) {
+  .rtl .hero-additionWrapper {
+    right: -45px;
+  }
+  .rtl .homeTanent-additionWrapper {
+    left: -32em;
+  }
+}
+@media (min-width: 992px) {
+  .rtl .hero-additionWrapper {
+    right: -50px;
+  }
+}
+@media (min-width: 1200px) {
+  .rtl .hero-additionWrapper {
+    right: -55px;
+  }
+  .rtl .homeTanent-additionWrapper {
+    left: -32em;
+  }
+}
+
+@media (min-width: 1400px) {
+  .rtl .hero-additionWrapper {
+    right: -70px;
+  }
+  .rtl .homeTanent-additionWrapper {
+    left: -37em;
+  }
+  .rtl .tanent-name {
+    left: auto;
+    right: -2.4rem;
+  }
+}
+
+.rtl input {
+  direction: rtl;
+}
