@@ -23,6 +23,7 @@ import { Button } from "@material-ui/core";
 import {AccountCircle} from "@material-ui/icons"
 import CategoriesManage from "./categories/categoriesManage";
 import ManageAds from "./ads";
+import ManageRecordState from "./recordStates/RecordStateManage";
 
 // import UsersManage from "../components/AdminDashboard/users/UsersManage";
 // import AllUsersSignMethod from "../components/AdminDashboard/home/AllUsersSignMethod";
@@ -277,12 +278,13 @@ function AdminPanel(props) {
                 <Container  maxWidth="lg" className={classes.container} >
                   <Grid container spacing={3} >
                     <TabPanel value={value} index={0} Dashboard={true} />
-                    <TabPanel  value={value} index={1} categories={true} />
-                    <TabPanel value={value} index={2} users={true} />
-                    <TabPanel value={value} index={3} orders={true} />
-                    <TabPanel value={value} index={4} contact={true} />
-                    <TabPanel value={value} index={5} quries={true} />
-                    <TabPanel value={value} index={6} emailSubs={true} />
+                    <TabPanel  value={value} index={1} recordState={true} />
+                    <TabPanel  value={value} index={2} categories={true} />
+                    <TabPanel value={value} index={3} users={true} />
+                    <TabPanel value={value} index={4} orders={true} />
+                    <TabPanel value={value} index={5} contact={true} />
+                    <TabPanel value={value} index={6} quries={true} />
+                    <TabPanel value={value} index={7} emailSubs={true} />
                   </Grid>
                   <Box pt={4}>
                     <Copyright />
@@ -357,7 +359,7 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({});
 
 function TabPanel(props) {
-  const { value, index, users, Dashboard, categories,orders,contact,quries,emailSubs } = props;
+  const { value, index, users, Dashboard,recordState, categories,orders,contact,quries,emailSubs } = props;
 
   return (
     <Grid  hidden={value !== index} item container >
@@ -377,6 +379,11 @@ function TabPanel(props) {
             // className={useStyles.fixedHeightPaper}
           >
             {/* <Typography> */}
+              {recordState && (
+                <>
+                  <ManageRecordState/>
+                </>
+              ) }
               {categories && (
                 <>
                   <CategoriesManage/>

@@ -295,9 +295,11 @@ const CategoriesManage = (props) => {
           firebase.database().ref(`categories/${cate}`).set({
             id: key,
             title : cate,
+            arabic_title : newCategory.arabic_title,
             description : newCategory.description,
+            arabic_description : newCategory.arabic_description,
             Image_URL : url,
-            Record_State: newCategory.Record_State,
+            Record_State: 1,
             Done_By: firebase.auth().currentUser.uid,
             transaction_date: postdate
             
@@ -387,7 +389,7 @@ const CategoriesManage = (props) => {
         </AppBar>
         <div className="UserupdateFormAdmin">
           <Typography variant="h6" gutterBottom>
-            Enter Name
+            Enter Details
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12}>
@@ -409,14 +411,45 @@ const CategoriesManage = (props) => {
                 label="Description"
                 fullWidth
                 error={newCategory.description === ""}
-                helperText={newCategory.description === "" ? 'Empty! please Enter ' : newCategory.description ? newCategory.description.length  <3 ? "Category Name shuold be greater 2 letter": ' ':' '  }
+                helperText={newCategory.description === "" ? 'Empty! please Enter ' : ' ' }
                 value={newCategory.description}
                 onChange={(e) => setNewCategory({
                   ...newCategory,
                   description: e.target.value
                 })} 
               />
-                 <label htmlFor="Record_State">Record Status*</label>
+               <Typography variant="h6" gutterBottom>
+            In Arabic
+          </Typography>
+              <TextField
+                style={{direction: "rtl"}}
+                required
+                name="title"
+                label="اسم التصنيف"
+                fullWidth
+                error={newCategory.arabic_title === ""}
+                helperText={newCategory.arabic_title === "" ? 'Empty! please Enter ' : newCategory.arabic_title ? newCategory.arabic_title.length  <3 ? "Category Name shuold be greater 2 letter": ' ':' '  }
+                value={newCategory.arabic_title}
+                onChange={(e) => setNewCategory({
+                  ...newCategory,arabic_title: e.target.value
+                })} 
+              />
+              <TextField
+                style={{direction: "rtl"}}
+                required
+                name="description"
+                label="وصف"
+                fullWidth
+                error={newCategory.arabic_description === ""}
+                helperText={newCategory.arabic_description === "" ? 'Empty! please Enter' :' ' }
+                value={newCategory.arabic_description}
+                onChange={(e) => setNewCategory({
+                  ...newCategory,
+                  arabic_description: e.target.value
+                })} 
+              />
+              
+                 {/* <label htmlFor="Record_State">Record Status*</label>
                   <select name="Record_State" className="form-control" onChange={(e) => setNewCategory({
                   ...newCategory,
                   Record_State: parseInt(e.target.value)
@@ -431,7 +464,7 @@ const CategoriesManage = (props) => {
                     :
                     <option value={1}>No Record Status found! </option>
                   }
-                  </select>
+                  </select> */}
                <div className="mt-3 SelectprodImgWrapper SelectprodImgWrapper-2">
               <button
                       className="imgSelbtn"
@@ -469,11 +502,8 @@ const CategoriesManage = (props) => {
                     </div>
             </Grid>
           </Grid>
-          <p
-            style={{ margin: "5px  0" }}
-            id="updErrMsg"
-            style={{ color: "red" }}
-          ></p>
+          
+        
           <Button
             style={{ marginTop: "10px", marginLeft: "7px" }}
             variant="contained"
@@ -513,6 +543,7 @@ const StyledTableRow = withStyles((theme) => ({
 
   },
 }))(TableRow);
+
 const GtRecState = (props) =>{
   const [record, setRecord] = useState("") 
   useEffect(()=>{
@@ -682,7 +713,7 @@ const UpdateForm = (props) => {
   const [updDetails, setupdDetails] = useState({
     Done_By: "",
     Image_URL: "",
-    Record_State: 0,
+    Record_State: 2,
     description: "",
     id: "",
     title: "",
@@ -698,8 +729,10 @@ const UpdateForm = (props) => {
     setupdDetails({
       Done_By: "",
       Image_URL: "",
-      Record_State: 0,
+      Record_State: 2,
       description: "",
+      arabic_title:"",
+      arabic_description:"",
       id: "",
       title: "",
       transaction_date: ""
@@ -716,7 +749,6 @@ const UpdateForm = (props) => {
 
 
   function getPreviousData(selectedCategory) {
-    console.log(selectedCategory)
     if (selectedCategory) {
 
       dbCategoryRef
@@ -821,9 +853,11 @@ async function updateCategory(selectedCategory){
                   dbCategoryRef.child(updDetails.title).set({
                     id: updDetails.id,
                     title: updDetails.title,
+                    arabic_title: updDetails.arabic_title,
                     description: updDetails.description,
+                    arabic_description: updDetails.arabic_description,
                     Image_URL: url,
-                    Record_State: updDetails.Record_State,
+                    Record_State: 2,
                     Done_By: firebase.auth().currentUser.uid,
                     transaction_date: postdate
                   });
@@ -850,9 +884,11 @@ async function updateCategory(selectedCategory){
               dbCategoryRef.child(updDetails.title).set({
                 id: updDetails.id,
                 title: updDetails.title,
+                arabic_title: updDetails.arabic_title,
                 description: updDetails.description,
+                arabic_description: updDetails.arabic_description,
                 Image_URL: updDetails.Image_URL,
-                Record_State: updDetails.Record_State,
+                Record_State: 2,
                 Done_By: firebase.auth().currentUser.uid,
                 transaction_date: postdate
               });
@@ -907,7 +943,6 @@ async function updateCategory(selectedCategory){
 // }
   return (
     <>
-    {console.log(updDetails)}
       <IconButton
         onClick={() => {
           handleClickOpen();
@@ -934,20 +969,20 @@ async function updateCategory(selectedCategory){
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              User Details
+              Category Details
             </Typography>
           </Toolbar>
         </AppBar>
         <div className="UserupdateFormAdmin">
           <Typography variant="h6" gutterBottom>
-            User Meta Details
+            Update Details
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12}>
               <TextField
                 required
                 name="title"
-                label="title"
+                label="Title"
                 fullWidth
                 error={updDetails.title === ""}
                 helperText={updDetails.title === "" ? 'Empty! please Enter ' : updDetails.title ? updDetails.title.length  <3 ? "Category Name shuold be greater 2 letter": ' ':' '  }
@@ -960,11 +995,36 @@ async function updateCategory(selectedCategory){
                 label="Description"
                 fullWidth
                 error={updDetails.description === ""}
-                helperText={updDetails.description === "" ? 'Empty! please Enter ' : updDetails.description ? updDetails.description.length  <3 ? "Category Name shuold be greater 2 letter": ' ':' '  }
+                helperText={updDetails.description === "" ? 'Empty! please Enter ' :' '}
                 value={updDetails.description}
                 onChange={handleUserUpdDetails} 
               />
-                 <label htmlFor="Record_State">Record Status*</label>
+               <Typography variant="h6" gutterBottom>
+               In Arabic
+              </Typography>
+                <TextField
+                style={{direction: "rtl"}}
+                    required
+                    name="arabic_title"
+                    label="التصنيف اسم"
+                    fullWidth
+                    error={updDetails.arabic_title === ""}
+                    helperText={updDetails.arabic_title === "" ? 'Empty! please Enter ' : updDetails.arabic_title ? updDetails.arabic_title.length  <3 ? "Category Name shuold be greater 2 letter": ' ':' '  }
+                    value={updDetails.arabic_title}
+                    onChange={(e) => handleUserUpdDetails(e)}
+                />
+                <TextField
+                style={{direction: "rtl"}}
+                    required
+                    name="arabic_description"
+                    label="وصف"  
+                    fullWidth
+                    error={updDetails.arabic_description === ""}
+                    helperText={updDetails.arabic_description === "" ? 'Empty! please Enter ' :' ' }
+                    value={updDetails.arabic_description}
+                    onChange={handleUserUpdDetails} 
+                  />
+                 {/* <label htmlFor="Record_State">Record Status*</label>
                   <select name="Record_State" className="form-control" value={updDetails.Record_State} onChange={(e) => setupdDetails({
                   ...updDetails,
                   Record_State: parseInt(e.target.value)
@@ -979,7 +1039,7 @@ async function updateCategory(selectedCategory){
                     :
                     <option value={1}>No Record Status found! </option>
                   }
-                  </select>
+                  </select> */}
                <div className="mt-3 SelectprodImgWrapper">
               <button
                       className="imgSelbtn"
@@ -1017,11 +1077,7 @@ async function updateCategory(selectedCategory){
           
             </Grid>
           </Grid>
-          <p
-            style={{ margin: "5px  0" }}
-            id="updErrMsg"
-            style={{ color: "red" }}
-          ></p>
+          
           <Button
             style={{ marginTop: "10px", marginLeft: "7px" }}
             variant="contained"
@@ -1042,8 +1098,15 @@ function FullScreenUserDetails(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [viewCategoryDetails, setViewCategoryDetails] = useState({
+    Done_By: "",
+    Image_URL: "",
+    Record_State: 0,
+    description: "",
+    arabic_description: "",
+    id: "",
+    arabic_title: "",
     title: "",
-    ads: 0
+    transaction_date: ""
   });
   const handleClickOpen = () => {
     setOpen(true);
@@ -1060,15 +1123,10 @@ function FullScreenUserDetails(props) {
         .get()
         .then((snapshot) => {
           if (snapshot.exists()) {
-            items.push(Object.keys(snapshot.val()))
-            setViewCategoryDetails({
-              ads: items.length ,
-              title: selectedCategory
-            });
+            setViewCategoryDetails(snapshot.val());
           }
         })
         .catch((error) => {
-   
           alert(error.message);
         });
     }
@@ -1107,18 +1165,63 @@ function FullScreenUserDetails(props) {
         <div className="UserupdateFormAdmin" style={{ minWidth: "400px" }}>
           <List>
             <ListItem>
-             
+               <CardMedia
+                image={viewCategoryDetails.Image_URL ? viewCategoryDetails.Image_URL : defaultimg}
+                className={classes.media}
+                style={{
+                  marginBottom: "10px",
+                  borderRadius: "none",
+                  marginRight: "18px",
+                }}
+              />
               <ListItemText
                 primary={viewCategoryDetails.title}
                 secondary="Name"
               />
+              <ListItemText
+                primary={viewCategoryDetails.arabic_title}
+                secondary="Name"
+              />
             </ListItem>
             <Divider />
-
             <ListItem>
               <ListItemText
-                primary={viewCategoryDetails.ads}
-                secondary="Total Ads in this category"
+                primary={viewCategoryDetails.description}
+                secondary="Description"
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemText
+                primary={viewCategoryDetails.arabic_description}
+                secondary="Description"
+              />
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <ListItemText
+                primary={viewCategoryDetails.Done_By}
+                secondary="Done By"
+              />
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <ListItemText
+                primary={viewCategoryDetails.transaction_date}
+                secondary="Transaction Date"
+              />
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <ListItemText
+                primary={viewCategoryDetails.Record_State}
+                secondary="Record State"
+              />
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <ListItemText
+                primary={viewCategoryDetails.id}
+                secondary="ID"
               />
             </ListItem>
           </List>

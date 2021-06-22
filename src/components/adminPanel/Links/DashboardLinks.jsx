@@ -23,9 +23,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import PageviewIcon from "@material-ui/icons/Pageview";
 import {MdContactPhone} from "react-icons/md";
 import {GrMail} from "react-icons/gr";
-
 import { AccountBoxOutlined, Category, ChatSharp } from "@material-ui/icons";
 import { FaBoxOpen } from "react-icons/fa";
+import { BsClipboardData } from "react-icons/bs";
 
 export default function Listitems(props) {
   const [selected, setSelected] = React.useState({ selected: null });
@@ -53,6 +53,12 @@ export default function Listitems(props) {
           label={props.ckopn ? "Dashboard" : ""}
           style={{ textDecoration: "none", color: "#fff" }}
           
+        />
+        <Tab
+          style={{ textDecoration: "none", color: "#fff" }}
+          className="sidebarTabs"
+          icon={<BsClipboardData />}
+          label={props.ckopn ? "Record State" : ""}
         />
         <Tab
           style={{ textDecoration: "none", color: "#fff" }}
