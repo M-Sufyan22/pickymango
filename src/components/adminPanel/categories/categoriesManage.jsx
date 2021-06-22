@@ -165,8 +165,7 @@ const CategoriesManage = (props) => {
 
   useEffect(() => {
     getAllCategories();
-    getAllRecordStates();
-    
+    getAllRecordStates();  
   }, []);
 
 
@@ -184,7 +183,7 @@ const CategoriesManage = (props) => {
     })
     setTimeout(()=>{
       loader &&  setLoader(false);  
-      if(arr.length == 0){
+      if(arr.length === 0){
         setCategories([]);
       } 
     },700)
